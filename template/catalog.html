@@ -1,0 +1,34 @@
+<?php include_once '_header.html'; ?>
+
+<div class="card">
+	<div class="card-body text-center">
+		Price of our store <a href="#" class="btn btn-outline-success">Open Mini List</a>
+	</div>
+</div>
+
+<table class="table table-striped">
+		<thead>
+		<tr>
+			<th scope="col">Image</th>
+			<th scope="col">Name</th>
+			<th scope="col">Unit</th>
+			<th scope="col">Price</th>
+			<th scope="col">Product Recommendations</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php 
+			foreach ($products as $product) {
+				echo '<tr>
+						<th><img src="/'.$product['img'].'" width="150" height="150" title="Img" /></th>
+						<td>'.$product['name'].'</td>
+						<td>'.$product['unit'].'</td>
+						<td>'.$product['price'].'&nbsp;грн</td>
+						<td>'.$product['techno'].'</td>
+					</tr>';
+			}
+		?>
+		</tbody>
+	</table>
+
+<?php include_once '_footer.html'; ?>

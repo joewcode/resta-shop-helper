@@ -1,0 +1,83 @@
+<?php include_once '_header.html'; ?>
+
+<div class="card">
+	<div class="card-body text-center">
+		View store statistics for various categories
+	</div>
+</div>
+<br />
+<div class="row">
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Popular customers</h5>
+				<ul class="list-group list-group-flush">
+				<?php 
+				$i = 0;
+				foreach ($popularCustomers as $customers) {
+					$i++;
+					if ( $i > 10 ) break;
+					echo '<li class="list-group-item"><span class="badge badge-primary">'.$i.'</span> '.$customers[1].' <span class="badge badge-success">'.$customers[0].' orders</span></li>';
+				}
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Popular goods</h5>
+				<ul class="list-group list-group-flush">
+				<?php 
+				$i = 0;
+				foreach ($popularGoods as $goods) {
+					$i++;
+					if ( $i > 10 ) break;
+					echo '<li class="list-group-item"><span class="badge badge-primary">'.$i.'</span> '.$goods[1].' <span class="badge badge-success">'.$goods[0].' units</span></li>';
+				}
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+<div class="row">
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Most customers</h5>
+				<ul class="list-group list-group-flush">
+				<?php 
+				$i = 0;
+				foreach ($mostCustomers as $customers) {
+					$i++;
+					if ( $i > 5 ) break;
+					echo '<li class="list-group-item"><span class="badge badge-primary">'.$i.'</span> '.$customers[1].' <span class="badge badge-success">'.$customers[0].' customers</span></li>';
+				}
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Popular Restaurant</h5>
+				<ul class="list-group list-group-flush">
+				<?php 
+				$i = 0;
+				foreach ($popularRestaurant as $restaurant) {
+					$i++;
+					if ( $i > 5 ) break;
+					echo '<li class="list-group-item"><span class="badge badge-primary">'.$i.'</span> '.$restaurant[1].' <span class="badge badge-success">'.$restaurant[0].'</span></li>';
+				}
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php include_once '_footer.html'; ?>

@@ -1,0 +1,91 @@
+<?php include_once '_header.html'; ?>
+
+<?php if ( isset($orderList) ) { ?>
+	<div class="card">
+		<div class="card-body text-center">
+			Grouped by delivery day and sort descending
+		</div>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Delivery date</th>
+			<th scope="col">Total clients</th>
+			<th scope="col">Options</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php 
+			$i = 0;
+			foreach ($orderList as $order) {
+				$i++;
+				echo '<tr>
+						<th scope="row">'.$i.'</th>
+						<td>'.$order[1].'</td>
+						<td>'.$order[2].'</td>
+						<td style="width: 300px">
+							<a href="?mod=orders&act=list&today='.$order[1].'" class="btn btn-outline-primary btn-sm">View</a>
+							<div class="btn-group" role="group">
+								<button id="jbtngr1" type="button" class="bbtn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download</button>
+								<div class="dropdown-menu" aria-labelledby="jbtngr1">
+									<a class="dropdown-item" onClick="orderUpload(\''.$order[1].'\', 0)" href="#">UTF 8</a>
+									<a class="dropdown-item" onClick="orderUpload(\''.$order[1].'\', 1)" href="#">cp 1251</a>
+								</div>
+							</div>
+							<button type="button" class="btn btn-danger btn-sm" onClick="alert(\'Ахахахахаха это фейк\')">Delete</button>
+						</td>
+					</tr>';
+			}
+			unset($i);
+		?>
+		</tbody>
+	</table>
+<?php } elseif ( isset($orderDetail) ) { ?>
+
+	<div class="card">
+		<div class="card-body text-center">
+			Orders by date, sorted by name
+		</div>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Addr</th>
+			<th scope="col">Name</th>
+			<th scope="col">Phone</th>
+			<th scope="col">Total</th>
+			<th scope="col">Comment</th>
+			<th scope="col">Products</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php 
+			$i = 0;
+			foreach ($orderDetail as $order) {
+				$i++;
+				echo '<tr>
+						<th scope="row">'.$i.'</th>
+						<td>'.$order['addr'].'</td>
+						<td><span class="badge badge-success">'.$order['name'].'</span></td>
+						<td style="width: 150px">'.$order['phone'].'</td>
+						<td style="width: 120px">'.$order['tsum'].' грн</td>
+						<td style="width: 300px">'.$order['comm'].'</td>
+						<td>'. arrayToPlist($order['prod_ids']) .'</td>
+					</tr>';
+			}
+			unset($i);
+		?>
+		</tbody>
+	</table>
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		$('body').removeClass('container').addClass('container-fluid');
+	});
+	</script>
+<?php }?>
+
+<?php include_once '_footer.html'; ?>
