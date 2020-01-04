@@ -1,1 +1,1 @@
-"# resta-shop-helper" 
+Helper script for corporation shop

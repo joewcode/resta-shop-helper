@@ -11,12 +11,9 @@ function footerStickBottom (footer_block) {
 }
 
 function resizeAll() {
-
-    footerStickBottom ('.footer');
-    
+	footerStickBottom ('.footer');
 }
 
 function orderUpload(date, type) {
 	location.href = '?mod=orders&act=download&today='+date+(type ? '&win=1' : '');
 }
-

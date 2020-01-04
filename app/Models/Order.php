@@ -1,10 +1,8 @@
 <?php
 
-
 class Order
 {
-	
-	
+
 	public static function groupDayList()
 	{
 		$obj = array();
@@ -15,7 +13,7 @@ class Order
 		arsort($obj);
 		return $obj;
 	}
-	
+
 	public static function detailDayList( $date )
 	{
 		if ( strtotime($date) > 0 ) {
@@ -26,10 +24,10 @@ class Order
 				$obj[] = $value;
 			}
 			return $obj;
-		} 
+		}
 		else return 'date error';
 	}
-	
+
 	public static function toExcel($dated, $products) {
 		$titles = array('Объект доставки', 'Цех изготов.', 'Наименование товара', 'Ед.', 'Кол-во', 'Отправка', 'Ф.И.О. получателя', 'Комментарий телефон');
 		$filename = 'orders-'. $dated .'.csv';
@@ -49,6 +47,5 @@ class Order
 		echo arrayToCsv($products, $titles);
 		die();
 	}
-	
-	
+
 }

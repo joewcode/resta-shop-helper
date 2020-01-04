@@ -1,10 +1,10 @@
 <?php
-
+//
 if ( !defined('JSTART') ) die('access denied');
 
 include 'app/helpers.php';
 
-// include global config 
+// include global config
 require_once $_SERVER['DOCUMENT_ROOT'].'/admin/setup/config.sql.php';
 define('PREF', $sql_access['pref']);
 
@@ -15,4 +15,3 @@ try {
     print 'Error!: ' . $e->getMessage() . '<br/>';
     die();
 }
-

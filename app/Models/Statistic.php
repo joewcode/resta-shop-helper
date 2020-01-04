@@ -2,25 +2,23 @@
 
 class Statistic
 {
-	
-	
 	public function init()
 	{
 		db()->query('DROP TABLE `'.PREF.'stats`');
-		db()->query('CREATE TABLE `'.PREF.'stats` ( 
-							`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , 
-							`name` VARCHAR(100) NOT NULL , 
-							`phone` VARCHAR(100) NOT NULL , 
-							`addr` VARCHAR(200) NOT NULL , 
-							`date` DATE NOT NULL , 
-							`date_d` DATE NOT NULL , 
-							`name_prod` VARCHAR(200) NOT NULL , 
-							`price_prod` DOUBLE(18,2) NOT NULL , 
+		db()->query('CREATE TABLE `'.PREF.'stats` (
+							`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
+							`name` VARCHAR(100) NOT NULL ,
+							`phone` VARCHAR(100) NOT NULL ,
+							`addr` VARCHAR(200) NOT NULL ,
+							`date` DATE NOT NULL ,
+							`date_d` DATE NOT NULL ,
+							`name_prod` VARCHAR(200) NOT NULL ,
+							`price_prod` DOUBLE(18,2) NOT NULL ,
 							`count_prod` DOUBLE(18,2) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;');
 		$this->generateDatabase();
 		return true;
 	}
-	
+
 	public function mostCustomers()
 	{
 		$obj = array();
@@ -36,7 +34,7 @@ class Statistic
 		$obj = array_reverse($obj);
 		return $obj;
 	}
-	
+
 	public function popularCustomers()
 	{
 		$obj = array();
@@ -50,7 +48,7 @@ class Statistic
 		$obj = array_reverse($obj);
 		return $obj;
 	}
-	
+
 	public function popularRestaurant()
 	{
 		$obj = array();
@@ -64,7 +62,7 @@ class Statistic
 		$obj = array_reverse($obj);
 		return $obj;
 	}
-	
+
 	public function popularGoods()
 	{
 		$obj = array();
@@ -78,7 +76,7 @@ class Statistic
 		$obj = array_reverse($obj);
 		return $obj;
 	}
-	
+
 	private function generateDatabase()
 	{
 		$base = array();
@@ -106,6 +104,5 @@ class Statistic
 		db()->query($sql);
 		return true;
 	}
-	
 	
 }

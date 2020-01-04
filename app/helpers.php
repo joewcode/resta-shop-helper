@@ -1,16 +1,17 @@
 <?php
 // help functions
 
-// ---
+// convert to excel export
 function conv($n) {
     return iconv('utf-8' , 'windows-1251', $n);
 }
 
+// db link
 function db() {
 	return $GLOBALS['db'];
 }
 
-// Router 
+// Router
 function getController() {
 	$mod = isset($_GET['mod']) ? $_GET['mod'] : 'index';
 	$c = 'index';
@@ -19,16 +20,18 @@ function getController() {
 		case 'orders': $c = 'orders'; break;
 		case 'catalog': $c = 'catalog'; break;
 		case 'stats': $c = 'stats'; break;
-		
+
 		default: $c = '404';
 	}
 	return $c;
 }
 
+// base decode
 function baseDeCrypt($data) {
 	return unserialize( base64_decode($data) );
 }
 
+// base array decrypt optimize
 function optimizeDecrypt($data) {
 	$list = array();
 	foreach ( $data as $val ) {
@@ -45,6 +48,8 @@ function optimizeDecrypt($data) {
 	}
 	return $list;
 }
+
+//
 function optimizeDecryptStats($data) {
 	$list = array();
 	foreach ( $data as $val ) {
@@ -58,6 +63,7 @@ function optimizeDecryptStats($data) {
 	return $list;
 }
 
+//
 function arrayToCsv($array, $titles) {
 	ob_start();
 	$df = fopen('php://output', 'w');
@@ -73,8 +79,7 @@ function arrayToCsv($array, $titles) {
 	return ob_get_clean();
 }
 
-
-
+//
 function optimizeAddr($addr) {
 	$revaddr = array(
 		'/Базовый комплекс: 2-й Моторный переулок 12\/1/',
@@ -85,10 +90,10 @@ function optimizeAddr($addr) {
 		'/Офис: переулок Маланова, 1/',
 		'/«Компот»: Пантелеймоновская, 70/',
 		'/«Тавернетта»: Екатерининская, 45/',
-		
+
 		'/«Компот»: Аркадия/',
 		'/«Компот»: Морвокзал/',
-		
+
         );
     $revaddrto = array(
 			'БК',
@@ -99,14 +104,15 @@ function optimizeAddr($addr) {
 			'Офис',
 			'Чижи',
 			'ТТ',
-			
+
 			'нет',
 			'нет',
-			
+
         );
 	return preg_replace($revaddr, $revaddrto, $addr);
 }
 
+//
 function arrayToPlist($arr) {
 	$text = '';
 	foreach ($arr as $a) {
@@ -115,10 +121,9 @@ function arrayToPlist($arr) {
 	return $text;
 }
 
+//
 function sqlProtect($str) {
 	$replace_list = array("/'/", '/"/', '/\//');
 	$str = preg_replace($replace_list, '', $str);
 	return $str;
 }
-
-
